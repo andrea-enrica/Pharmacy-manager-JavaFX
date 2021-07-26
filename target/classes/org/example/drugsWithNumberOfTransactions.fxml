@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.DrugsOrderedByTransactions">
+    <Label text="Drugs ordered by number of transaction:" />
+    <GridPane>
+        <children>
+            <TableView GridPane.columnIndex="0" GridPane.columnSpan="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS" fx:id="tblDrugsWithTransactions" editable="true">
+                <columns>
+                    <TableColumn fx:id="colDrugId" text="Id">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="idDrug" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colDrugName" text="Drug Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="drugName" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="colTransactionNumbers" text="Number of transactions">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="numberOfTransactions"  />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </children>
+    </GridPane>
+</VBox>

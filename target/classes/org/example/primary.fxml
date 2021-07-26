@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<!-- descrie ce apare in fereastra, aici se modifica ce o sa apara in fereastra-->
+<!--Vbox este pe verticala HBOx pe orizontala-->
+<!--controller este o clasa care controleaza un view-->
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
+   <HBox>
+      <VBox>
+      <children>
+         <Label text="Current Drug List:" />
+
+         <TableView fx:id="tblDrugs" editable="true">
+            <columns>
+               <TableColumn fx:id="colDrugId" text="Id">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="idEntity" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colDrugName" text="Drug Name">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="drugName" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colDrugProducer" text="Producer">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="drugProducer"  />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colDrugPrice" text="Price">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="drugPrice" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colDrugStock" text="Stock">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="drugStock" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colWithoutRecipe" text="Recipe needed">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="withoutRecipe" />
+                  </cellValueFactory>
+               </TableColumn>
+            </columns>
+         </TableView>
+
+         <Label text="Add a drug:" />
+
+         <TextField fx:id="txtDrugId" promptText="Drug id"/>
+         <TextField fx:id="txtDrugName" promptText="Drug Name"/>
+         <TextField fx:id="txtDrugProducer" promptText="Producer"/>
+         <TextField fx:id="txtDrugPrice" promptText="Price"/>
+         <TextField fx:id="txtDrugStock" promptText="Stock"/>
+         <CheckBox fx:id="chkWithoutRecipe" text="Recipe needed"/>
+
+         <HBox alignment="CENTER" spacing="5">
+            <Button fx:id="btnAddDrug" text="Add Drug" onAction="#btnAddDrugClick"/>
+            <Button fx:id="btnUpdateDrug" text="Update Drug" onAction="#btnUpdateDrugClick"/>
+            <Button fx:id="btnDeleteSelected" text="Delete selected Drug" onAction="#btnDeleteSelectedDrugClick"/>
+         </HBox>
+      </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+
+      <VBox>
+      <children>
+
+         <Label text="Current Transaction List:" />
+
+         <TableView fx:id="tblTransactions" editable="true">
+            <columns>
+               <TableColumn fx:id="colIdTransaction" text="Id">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="idEntity" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colIdDrug" text="Drug Id">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="drugId" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colClientCard" text="Client card">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="clientCardNumber"  />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colNumberOfPieces" text="Number of pieces">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="piecesOfDrug" />
+                  </cellValueFactory>
+               </TableColumn>
+               <TableColumn fx:id="colDateAndHour" text="Date and Hour">
+                  <cellValueFactory>
+                     <PropertyValueFactory property="dateAndHour" />
+                  </cellValueFactory>
+               </TableColumn>
+            </columns>
+         </TableView>
+
+         <Label text="Add a Transaction:" />
+
+         <TextField fx:id="txtTransactionId" promptText="Transaction id"/>
+         <TextField fx:id="txtIdDrug" promptText="ID Drug"/>
+         <TextField fx:id="txtClientCard" promptText="Client card"/>
+         <TextField fx:id="txtNumberOfPieces" promptText="Number of pieces"/>
+         <TextField fx:id="txtDateAndHour" promptText="Date and hour"/>
+
+         <HBox alignment="CENTER" spacing="5" style="-fx-padding: 0 5 10 5;">
+            <Button fx:id="btnAddTransaction" text="Add Transaction" onAction="#btnAddTransactionClick"/>
+            <Button fx:id="btnUpdateTransaction" text="Update Transaction" onAction="#btnUpdateTransactionClick"/>
+            <Button fx:id="btnDeleteSelectedTransaction" text="Delete selected transaction" onAction="#btnDeleteSelectedTransactionClick"/>
+         </HBox>
+      </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </HBox>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <Button fx:id="btnFullTextSearch" text="Search drugs and transactions" onAction="#btnFullTextSearchClick"/>
+   <Button fx:id="btnTransactionDateHourSearch" text="Show transactions between two dates" onAction="#btnTransactionDateHourSearchClick"/>
+   <Button fx:id="btnShowDrugsWithNumberOfTransactions" text="Show drugs with number of transactions" onAction="#btnShowDrugsWithNumberOfTransactionsClick"/>
+   <Button fx:id="btnShowClientCardWithNumberOfTransactions" text="Show client card with number of transactions" onAction="#btnShowClientCardWithNumberOfTransactionsClick"/>
+   <Button fx:id="btnDeleteTransactionDateSearch" text="Delete transaction between two selected dates" onAction="#btnDeleteTransactionDateSearch"/>
+   <Button fx:id="btnIncreasePrice" text="Increase drug price with an selected percentage" onAction="#btnIncreasePrice"/>
+   <Button fx:id="btnUndo" text="Undo" onAction="#btnUndoClick"/>
+   <Button fx:id="btnRedo" text="Redo" onAction="#btnRedoClick"/>
+</VBox>
